@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+{% extends '_base.html' %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>{% block page_title %}Products List{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    <h1>products list</h1>
+    {% for product in products %}
+        <h2>{{ product.title }}</h2>
+        <p>{{ product.description|truncatewords:12 }}</p>
+        <a type="submit" class="btn btn-dark" href="{{ product.get_absolute_url }}">مشاهده ی جزئیات</a>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
