@@ -38,7 +38,7 @@ class ProductDetailView(generic.DetailView):
         return context
 
 
-class CommentCreatView(generic.CreateView):
+class CommentCreateView(generic.CreateView):
     model = Comment
     form_class = CommentForm
 
@@ -46,7 +46,7 @@ class CommentCreatView(generic.CreateView):
         obj = form.save(commit=False)
         obj.author = self.request.user
 
-        product_id = self.kwargs['product_id']
+        product_id = int(self.kwargs['product_id'])
         product = get_object_or_404(Product, id=product_id)
         obj.product = product
 
