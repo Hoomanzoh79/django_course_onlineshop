@@ -1,12 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 {% load static %}
 {% load comment_tags %}
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>{% block page_title %}جزئیات {{ product.title }}{% endblock %}</title>
+    <title>{% block page_title %}{% translate 'Product details of' %} {{ product.title }}{% endblock %}</title>
 </head>
 <body>
 {% block content %}
@@ -43,9 +44,7 @@
                                     {{ product.description }}
                                 </p>
                                 <div class="my-5 py-5 product-price-wrapper mb--25">
-                                    <span class="money text-success">{{ product.price }}</span>
-                                    <span class="price-separator">-</span>
-                                    <span class="money old-price text-danger">۲۱۰,۰۰۰ تومان</span>
+                                    <span class="money text-danger"> {{ product.price }} {% translate '$' %}</span>
                                 </div>
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
                                     <div class="quantity-wrapper d-flex justify-content-start">
@@ -56,11 +55,11 @@
                                     </div>
                                     <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
                                             onclick="window.location.href='cart.html'">
-                                        اضافه به سبد خرید
+                                        {% trans 'Add to cart' %}
                                     </button>
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">
-                                    <p><span class="m-0">دسته بندی ها:</span>
+                                    <p><span class="m-0">{% translate 'Categories' %}</span>
                                         <a href="shop.html">لباس</a>,
                                         <a href="shop.html">تابستانی</a>,
                                         <a href="shop.html">گرم</a>,
@@ -76,7 +75,7 @@
                                 <div class="nav nav-tabs product-data-tab__head" id="product-tab" role="tablist">
                                     <a class="m-0 product-data-tab__link nav-link active" id="nav-description-tab"
                                        data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
-                                        <span>توضیحات محصول</span>
+                                        <span>{% trans 'Product Description' %}</span>
                                     </a>
                                     <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
                                        href="#nav-info" role="tab" aria-selected="true">
@@ -157,12 +156,12 @@
                                                 <div class="row">
                                                     <div class="border-top py-5 w-100"></div>
                                                     <div class="col-lg-8 m-auto">
-                                                        <span class="reply-title pull-right">نظر خود را بنویسید</span>
+                                                        <span class="reply-title pull-right">{% trans 'Write your comment' %}</span>
                                                         <br>
                                                         <form action="{% url 'comment_create' product.id %}" method="post">
                                                             {% csrf_token %}
                                                             {{ comment_form|crispy }}
-                                                            <button type="submit" class="btn btn-success">ارسال</button>
+                                                            <button type="submit" class="btn btn-success">{% trans 'Submit' %}</button>
                                                         </form>
                                                     </div>
                                                 </div>

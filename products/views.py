@@ -2,6 +2,8 @@ from django.views import generic
 from .models import Product, Comment
 from .forms import CommentForm
 from django.shortcuts import get_object_or_404, render
+from django.utils.translation import gettext as _
+from django.contrib import messages
 
 
 class ProductListView(generic.ListView):
@@ -9,6 +11,14 @@ class ProductListView(generic.ListView):
     queryset = Product.objects.filter(active=True)
     template_name = 'products/product_list.html'
     context_object_name = 'products'
+
+
+def test_messaging(request):
+    success_result = _('The messaging has been successful')
+    error_result = _('The messaging has not been successful')
+    messages.success(request, success_result)
+    messages.error(request, error_result)
+    return render(request, template_name='products/test_messages.html')
 
 
 # def product_detail_view(request, pk):
