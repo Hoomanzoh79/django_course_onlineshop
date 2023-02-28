@@ -47,16 +47,20 @@
                                     <span class="money text-danger"> {{ product.price }} {% translate '$' %}</span>
                                 </div>
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-                                    <div class="quantity-wrapper d-flex justify-content-start">
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1"
-                                                   min="1">
+                                    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="quantity-wrapper d-flex justify-content-start">
+                                            <div class="quantity">
+                                            <input type="number" class="quantity-input" name="quantity" id="qty"
+                                                   value="1"
+                                                   min="1" max="30">
+                                            </div>
+                                        <button type="submit"
+                                                class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                            {% trans 'Add to cart' %}
+                                        </button>
                                         </div>
-                                    </div>
-                                    <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
-                                            onclick="window.location.href='cart.html'">
-                                        {% trans 'Add to cart' %}
-                                    </button>
+                                    </form>
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">
                                     <p><span class="m-0">{% translate 'Categories' %}</span>
@@ -122,7 +126,8 @@
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
                                          aria-labelledby="nav-reviews-tab">
                                         <div class="product-reviews">
-                                            <h3 class="review__title">{{ product.comments.all|only_active_comments|length }} نظر برای لباس تابستانی</h3>
+                                            <h3 class="review__title">{{ product.comments.all|only_active_comments|length }}
+                                                نظر برای لباس تابستانی</h3>
                                             <ul class="review__list">
                                                 {% for comment in product.comments.all|only_active_comments %}
                                                     <li class="review__item">
@@ -139,7 +144,8 @@
                                                                         </div>
                                                                         <div class="product-rating">
                                                                             <div class="m-0 star-rating star-five">
-                                                                            <span>Rated <strong class="rating">{{ comment.stars }}</strong> out of 5</span>
+                                                                                <span>Rated <strong
+                                                                                        class="rating">{{ comment.stars }}</strong> out of 5</span>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -158,10 +164,12 @@
                                                     <div class="col-lg-8 m-auto">
                                                         <span class="reply-title pull-right">{% trans 'Write your comment' %}</span>
                                                         <br>
-                                                        <form action="{% url 'comment_create' product.id %}" method="post">
+                                                        <form action="{% url 'comment_create' product.id %}"
+                                                              method="post">
                                                             {% csrf_token %}
                                                             {{ comment_form|crispy }}
-                                                            <button type="submit" class="btn btn-success">{% trans 'Submit' %}</button>
+                                                            <button type="submit"
+                                                                    class="btn btn-success">{% trans 'Submit' %}</button>
                                                         </form>
                                                     </div>
                                                 </div>
