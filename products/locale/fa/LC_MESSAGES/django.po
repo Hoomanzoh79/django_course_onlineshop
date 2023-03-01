@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-16 17:24+0330\n"
-"PO-Revision-Date: 2023-02-16 17:24+0330\n"
+"POT-Creation-Date: 2023-03-01 19:10+0330\n"
+"PO-Revision-Date: 2023-03-01 19:11+0330\n"
 "Last-Translator:   <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -54,23 +54,23 @@ msgstr "توضیحات محصول"
 msgid "$"
 msgstr "تومان"
 
-#: .\templates\products\product_detail.html:58
+#: .\templates\products\product_detail.html:60
 msgid "Add to cart"
 msgstr "اضافه کردن به سبد خرید"
 
-#: .\templates\products\product_detail.html:62
+#: .\templates\products\product_detail.html:66
 msgid "Categories"
 msgstr "دسته بندی ها"
 
-#: .\templates\products\product_detail.html:78
+#: .\templates\products\product_detail.html:82
 msgid "Product Description"
 msgstr "توضیحات محصول"
 
-#: .\templates\products\product_detail.html:159
+#: .\templates\products\product_detail.html:165
 msgid "Write your comment"
 msgstr "کامنت خود را بنویسید"
 
-#: .\templates\products\product_detail.html:164
+#: .\templates\products\product_detail.html:172
 msgid "Submit"
 msgstr "ارسال"
 
@@ -79,6 +79,10 @@ msgid "The messaging has been successful"
 msgstr "تست مسیج با موفقیت انجام شد "
 
 #: .\views.py:18
-#| msgid "The messaging has been successful"
 msgid "The messaging has not been successful"
 msgstr "تست مسیج با موفقیت انجام نشد !"
+
+#: .\views.py:62
+#| msgid "The messaging has been successful"
+msgid "Your comment has been created successfully"
+msgstr "نظر شما با موفقیت ثبت گردید✅"
