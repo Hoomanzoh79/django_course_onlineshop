@@ -119,6 +119,16 @@
 {#      <a href="{% url 'account_signup' %}" class="btn btn-info">Signup</a> |#}
 {#      <a href="{% url 'account_login' %}" class="btn btn-warning">Login</a>#}
 {#  {% endif %}#}
+{% if messages %}
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 {% block content %}
 
 {% endblock %}
